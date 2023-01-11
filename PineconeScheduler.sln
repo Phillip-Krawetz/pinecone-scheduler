@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PineconeScheduler.Client", "PineconeScheduler.Client\PineconeScheduler.Client.csproj", "{7094D6BE-86AA-4397-9A96-31676C50AAA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PineconeScheduler.Domain", "PineconeScheduler.Domain\PineconeScheduler.Domain.csproj", "{FB2EC8B8-82F8-4BB9-B955-51A565BD25AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PineconeScheduler.Storing", "PineconeScheduler.Storing\PineconeScheduler.Storing.csproj", "{2BAFBE91-4528-4AF4-9CF9-2C8113CD8E8A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7094D6BE-86AA-4397-9A96-31676C50AAA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7094D6BE-86AA-4397-9A96-31676C50AAA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7094D6BE-86AA-4397-9A96-31676C50AAA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7094D6BE-86AA-4397-9A96-31676C50AAA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB2EC8B8-82F8-4BB9-B955-51A565BD25AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB2EC8B8-82F8-4BB9-B955-51A565BD25AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB2EC8B8-82F8-4BB9-B955-51A565BD25AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB2EC8B8-82F8-4BB9-B955-51A565BD25AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BAFBE91-4528-4AF4-9CF9-2C8113CD8E8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BAFBE91-4528-4AF4-9CF9-2C8113CD8E8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BAFBE91-4528-4AF4-9CF9-2C8113CD8E8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BAFBE91-4528-4AF4-9CF9-2C8113CD8E8A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
