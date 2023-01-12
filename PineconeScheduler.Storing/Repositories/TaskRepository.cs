@@ -1,4 +1,5 @@
 using PineconeScheduler.Domain.Enums;
+using PineconeScheduler.Domain.Interfaces;
 using PineconeScheduler.Domain.Models;
 using PineconeScheduler.Storing.Connectors;
 
@@ -6,8 +7,8 @@ namespace PineconeScheduler.Storing.Repositories
 {
   public class TaskRepository
   {
-    private List<ScheduledTask> _allTasks { get; set; }
-    public List<ScheduledTask> AllTasks 
+    private List<IScheduledTask> _allTasks { get; set; }
+    public List<IScheduledTask> AllTasks 
     { 
       get => _allTasks; 
     }
@@ -18,7 +19,7 @@ namespace PineconeScheduler.Storing.Repositories
       _allTasks = _converter.LoadTasks();
     }
 
-    public List<ScheduledTask> GetTasksByType(TaskType DesiredType)
+    public List<IScheduledTask> GetTasksByType(TaskType DesiredType)
     {
       return _allTasks.Where(x => x.TaskType == DesiredType).ToList();
     }

@@ -2,17 +2,18 @@ using System;
 using System.Diagnostics;
 using Microsoft.Win32;
 using PineconeScheduler.Domain.Enums;
+using PineconeScheduler.Domain.Interfaces;
 
 namespace PineconeScheduler.Domain.Models
 {
-  public class ScheduledTask
+  public class UnlockTask : IScheduledTask
   {
     public string Name { get; set; }
     public string Command { get; set; }
     public string Arguments { get; set; }
     public TaskType TaskType { get; set; }
 
-    public ScheduledTask(string Name, string Command, string Arguments = "", TaskType TaskType = TaskType.SessionUnlock)
+    public UnlockTask(string Name, string Command, string Arguments = "", TaskType TaskType = TaskType.SessionUnlock)
     {
       this.Name = Name;
       this.Command = Command;

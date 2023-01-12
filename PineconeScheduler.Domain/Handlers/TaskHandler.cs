@@ -1,12 +1,13 @@
 using Microsoft.Win32;
+using PineconeScheduler.Domain.Interfaces;
 using PineconeScheduler.Domain.Models;
 
 namespace PineconeScheduler.Domain.Handlers
 {
   public class TaskHandler
   {
-    private static List<ScheduledTask> _tasks_SessionSwitch = new List<ScheduledTask>();
-    public List<ScheduledTask> Tasks_SessionSwitch 
+    private static List<IScheduledTask> _tasks_SessionSwitch = new List<IScheduledTask>();
+    public List<IScheduledTask> Tasks_SessionSwitch 
     { 
       get => _tasks_SessionSwitch;
     }
@@ -39,12 +40,12 @@ namespace PineconeScheduler.Domain.Handlers
       SystemEvents.SessionSwitch -= new SessionSwitchEventHandler(Events_SessionSwitch);
     }
 
-    public void AddTasks(ScheduledTask NewTask)
+    public void AddTasks(IScheduledTask NewTask)
     {
       _tasks_SessionSwitch.Add(NewTask);
     }
 
-    public void AddTasks(List<ScheduledTask> NewTasks)
+    public void AddTasks(List<IScheduledTask> NewTasks)
     {
       _tasks_SessionSwitch.AddRange(NewTasks);
     }
