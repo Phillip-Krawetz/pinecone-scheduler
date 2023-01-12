@@ -3,16 +3,19 @@ using System.Windows.Input;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 using PineconeScheduler.Client.ViewModels;
 using PineconeScheduler.Client.Views;
+using PineconeScheduler.Domain.Handlers;
 
 namespace PineconeScheduler.Client;
 
 public partial class App : Application
 {
+  private TaskHandler _taskHandler = new TaskHandler();
   public override void Initialize()
   {
     AvaloniaXamlLoader.Load(this);
@@ -43,17 +46,31 @@ public partial class App : Application
     icon.Icon = new WindowIcon(assets?.Open(
         new Uri("avares://PineconeScheduler.Client/Assets/avalonia-logo.ico")));
 
-    var exitIcon = new NativeMenuItem();
-    exitIcon.Header = "Exit";
-    exitIcon.Click += ExitCommand;
+    var openItem = new NativeMenuItem();
+    openItem.Header = "Open";
+    openItem.Click += OpenCommand;
 
-    icon.Menu.Items.Add(exitIcon);
+    var exitItem = new NativeMenuItem();
+    exitItem.Header = "Exit";
+    exitItem.Click += ExitCommand;
+
+    icon.Menu.Items.Add(openItem);
+    icon.Menu.Items.Add(exitItem);
 
     icons.Add(icon);
   }
 
   public void ExitCommand(object? sender, object args)
   {
+    _taskHandler.CleanUp();
     (App.Current?.ApplicationLifetime as IClassicDesktopStyleApplicationLifetime)?.Shutdown();
+  }
+
+  public void OpenCommand(object? sender, object args)
+  {
+    if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+    {
+      desktop.MainWindow.Show();
+    }
   }
 }

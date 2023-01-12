@@ -8,7 +8,10 @@ public partial class MainWindow : Window
   public MainWindow()
   {
     InitializeComponent();
-    var taskHandler = new TaskHandler();
-    Closing += taskHandler.CleanUp;
+    Closing += (s, e) =>
+    {
+      Hide();
+      e.Cancel = true;
+    };
   }
 }

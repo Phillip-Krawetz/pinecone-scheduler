@@ -38,7 +38,7 @@ namespace PineconeScheduler.Domain.Handlers
       }
     }
 
-    public void CleanUp(object? sender, object args)
+    public void CleanUp()
     {
       SystemEvents.SessionSwitch -= new SessionSwitchEventHandler(Events_SessionSwitch);
     }
