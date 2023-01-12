@@ -57,6 +57,8 @@ public partial class App : Application
     icon.Menu.Items.Add(openItem);
     icon.Menu.Items.Add(exitItem);
 
+    icon.Clicked += OpenCommand;
+
     icons.Add(icon);
   }
 
