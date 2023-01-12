@@ -5,7 +5,7 @@ namespace PineconeScheduler.Domain.Handlers
 {
   public class TaskHandler
   {
-    public List<ScheduledTask> _tasks_SessionSwitch = new List<ScheduledTask>();
+    private static List<ScheduledTask> _tasks_SessionSwitch = new List<ScheduledTask>();
     public List<ScheduledTask> Tasks_SessionSwitch 
     { 
       get => _tasks_SessionSwitch;
@@ -16,10 +16,6 @@ namespace PineconeScheduler.Domain.Handlers
     public TaskHandler()
     {
       SystemEvents.SessionSwitch += new SessionSwitchEventHandler(Events_SessionSwitch);
-
-      var testTask = new ScheduledTask("Test", "C:\\Program Files\\VideoLAN\\VLC\\vlc.exe");
-      testTask.Arguments = "\"C:\\Videos\\Test.mp4\" -Idummy -f --no-osd --video-on-top vlc://quit";
-      _tasks_SessionSwitch.Add(testTask);
     }
 
     public void Events_SessionSwitch(object sender, SessionSwitchEventArgs args)
@@ -41,6 +37,16 @@ namespace PineconeScheduler.Domain.Handlers
     public void CleanUp()
     {
       SystemEvents.SessionSwitch -= new SessionSwitchEventHandler(Events_SessionSwitch);
+    }
+
+    public void AddTasks(ScheduledTask NewTask)
+    {
+      _tasks_SessionSwitch.Add(NewTask);
+    }
+
+    public void AddTasks(List<ScheduledTask> NewTasks)
+    {
+      _tasks_SessionSwitch.AddRange(NewTasks);
     }
   }
 }

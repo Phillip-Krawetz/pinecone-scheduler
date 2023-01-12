@@ -29,5 +29,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PineconeScheduler.Domain\PineconeScheduler.Domain.csproj" />
+    <ProjectReference Include="..\PineconeScheduler.Storing\PineconeScheduler.Storing.csproj" />
   </ItemGroup>
 </Project>

@@ -10,6 +10,7 @@ using Avalonia.Platform;
 using PineconeScheduler.Client.ViewModels;
 using PineconeScheduler.Client.Views;
 using PineconeScheduler.Domain.Handlers;
+using PineconeScheduler.Storing.Repositories;
 
 namespace PineconeScheduler.Client;
 
@@ -32,6 +33,7 @@ public partial class App : Application
     }
 
     InitializeTray();
+    InitializeRepository();
 
     base.OnFrameworkInitializationCompleted();
   }
@@ -60,6 +62,12 @@ public partial class App : Application
     icon.Clicked += OpenCommand;
 
     icons.Add(icon);
+  }
+
+  private void InitializeRepository()
+  {
+    var repo = new TaskRepository();
+    _taskHandler.AddTasks(repo.AllTasks);
   }
 
   public void ExitCommand(object? sender, object args)
