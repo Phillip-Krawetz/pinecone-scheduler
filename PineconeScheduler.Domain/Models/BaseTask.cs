@@ -1,31 +1,28 @@
+using System.ComponentModel;
 using System.Diagnostics;
 using PineconeScheduler.Domain.Enums;
 using PineconeScheduler.Domain.Interfaces;
 
 namespace PineconeScheduler.Domain.Models
 {
-  public class BaseTask : IScheduledTask
+  public abstract class BaseTask : IScheduledTask
   {
     public string Name { get; set; }
-    public string Command { get; set; }
-    public string Arguments { get; set; }
     public TaskType TaskType { get; set; }
     public ITrigger? Trigger { get; set; }
-    private Thread? _workerThread { get; set; }
 
-    public BaseTask(string Name, string Command, string Arguments = "")
+    public BaseTask(string Name, ITrigger Trigger)
     {
       this.Name = Name;
-      this.Command = Command;
-      this.Arguments = Arguments;
+      this.Trigger = Trigger;
+      this.Trigger.Completed += (s, e) =>
+      {
+        var bw = new BackgroundWorker();
+        bw.DoWork += Execute;
+        bw.RunWorkerAsync();
+      };
     }
 
-    public void Execute(object? sender, EventArgs args)
-    {
-      Process task = new Process();
-      task.StartInfo.FileName = Command;
-      task.StartInfo.Arguments = Arguments;
-      task.Start();
-    }
+    public abstract void Execute(object? sender, EventArgs args);
   }
 }
