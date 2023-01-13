@@ -11,7 +11,7 @@ namespace PineconeScheduler.Storing.Connectors
     public List<IScheduledTask> LoadTasks()
     {
       var allTasks = new List<IScheduledTask>();
-      var dummyTask = new CmdTask("Test", "C:\\Program Files\\VideoLAN\\VLC\\vlc.exe", new UnlockTrigger());
+      var dummyTask = new CmdTask("Test", new UnlockTrigger(), "C:\\Program Files\\VideoLAN\\VLC\\vlc.exe");
       dummyTask.Arguments = "\"C:\\Videos\\Test.mp4\" -Idummy -f --no-osd --video-on-top vlc://quit";
       allTasks.Add(dummyTask);
 

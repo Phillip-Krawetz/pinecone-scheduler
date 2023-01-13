@@ -7,7 +7,7 @@ namespace PineconeScheduler.Domain.Models
   {
     public string Command { get; set; }
     public string Arguments { get; set; }
-    public CmdTask(string Name, string Command, ITrigger Trigger, string Arguments = "") : base(Name, Trigger)
+    public CmdTask(string Name, ITrigger Trigger, string Command, string Arguments = "") : base(Name, Trigger)
     {
       this.Command = Command;
       this.Arguments = Arguments;
