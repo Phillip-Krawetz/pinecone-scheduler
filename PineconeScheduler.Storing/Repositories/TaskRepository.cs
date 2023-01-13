@@ -30,5 +30,11 @@ namespace PineconeScheduler.Storing.Repositories
         }
       }
     }
+
+    public void AddTask(IScheduledTask NewTask)
+    {
+      _converter.SaveTask(NewTask);
+      _allTasks.Add(NewTask);
+    }
   }
 }
