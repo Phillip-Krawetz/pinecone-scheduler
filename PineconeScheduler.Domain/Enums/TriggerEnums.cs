@@ -1,6 +1,6 @@
 namespace PineconeScheduler.Domain.Enums
 {
-  public enum TaskType
+  public enum TriggerType
   {
     SessionUnlock,
     TimerBased

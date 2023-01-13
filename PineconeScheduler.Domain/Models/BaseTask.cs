@@ -8,7 +8,6 @@ namespace PineconeScheduler.Domain.Models
   public abstract class BaseTask : IScheduledTask
   {
     public string Name { get; set; }
-    public TaskType TaskType { get; set; }
     public ITrigger? Trigger { get; set; }
 
     public BaseTask(string Name, ITrigger Trigger)

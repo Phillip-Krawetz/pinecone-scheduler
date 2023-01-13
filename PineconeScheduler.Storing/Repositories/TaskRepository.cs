@@ -19,11 +19,6 @@ namespace PineconeScheduler.Storing.Repositories
       _allTasks = _converter.LoadTasks();
     }
 
-    public List<IScheduledTask> GetTasksByType(TaskType DesiredType)
-    {
-      return _allTasks.Where(x => x.TaskType == DesiredType).ToList();
-    }
-
     public void CleanAll()
     {
       foreach(var task in _allTasks)
