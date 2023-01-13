@@ -16,7 +16,7 @@ namespace PineconeScheduler.Domain.Handlers
 
     public TaskHandler()
     {
-      SystemEvents.SessionSwitch += new SessionSwitchEventHandler(Events_SessionSwitch);
+      //SystemEvents.SessionSwitch += new SessionSwitchEventHandler(Events_SessionSwitch);
     }
 
     public void Events_SessionSwitch(object sender, SessionSwitchEventArgs args)
@@ -31,7 +31,7 @@ namespace PineconeScheduler.Domain.Handlers
     {
       foreach(var item in Tasks_SessionSwitch)
       {
-        item.Execute();
+        //item.Execute();
       }
     }
 

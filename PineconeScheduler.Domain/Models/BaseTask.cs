@@ -10,6 +10,8 @@ namespace PineconeScheduler.Domain.Models
     public string Command { get; set; }
     public string Arguments { get; set; }
     public TaskType TaskType { get; set; }
+    public ITrigger? Trigger { get; set; }
+    private Thread? _workerThread { get; set; }
 
     public BaseTask(string Name, string Command, string Arguments = "")
     {
@@ -18,7 +20,7 @@ namespace PineconeScheduler.Domain.Models
       this.Arguments = Arguments;
     }
 
-    public void Execute()
+    public void Execute(object? sender, EventArgs args)
     {
       Process task = new Process();
       task.StartInfo.FileName = Command;

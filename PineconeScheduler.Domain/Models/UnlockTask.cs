@@ -8,6 +8,8 @@ namespace PineconeScheduler.Domain.Models
     public UnlockTask(string Name, string Command, string Arguments = "") : base(Name, Command, Arguments)
     {
       this.TaskType = TaskType.SessionUnlock;
+      this.Trigger = new UnlockTrigger();
+      Trigger.Completed += Execute;
     }
   }
 }

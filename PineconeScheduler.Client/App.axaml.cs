@@ -1,22 +1,18 @@
 using System;
-using System.Windows.Input;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Input;
 using Avalonia.Markup.Xaml;
-using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 using PineconeScheduler.Client.ViewModels;
 using PineconeScheduler.Client.Views;
-using PineconeScheduler.Domain.Handlers;
 using PineconeScheduler.Storing.Repositories;
 
 namespace PineconeScheduler.Client;
 
 public partial class App : Application
 {
-  private TaskHandler _taskHandler = new TaskHandler();
+  private TaskRepository _repo = new TaskRepository();
   public override void Initialize()
   {
     AvaloniaXamlLoader.Load(this);
@@ -33,7 +29,6 @@ public partial class App : Application
     }
 
     InitializeTray();
-    InitializeRepository();
 
     base.OnFrameworkInitializationCompleted();
   }
@@ -67,12 +62,11 @@ public partial class App : Application
   private void InitializeRepository()
   {
     var repo = new TaskRepository();
-    _taskHandler.AddTasks(repo.AllTasks);
   }
 
   public void ExitCommand(object? sender, object args)
   {
-    _taskHandler.CleanUp();
+    _repo.CleanAll();
     (App.Current?.ApplicationLifetime as IClassicDesktopStyleApplicationLifetime)?.Shutdown();
   }
 

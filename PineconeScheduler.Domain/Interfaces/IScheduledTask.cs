@@ -6,6 +6,7 @@ namespace PineconeScheduler.Domain.Interfaces
   {
     public string Name { get; set; }
     public TaskType TaskType { get; set; }
-    void Execute();
+    public ITrigger? Trigger { get; set; }
+    void Execute(object? sender, EventArgs args);
   }
 }

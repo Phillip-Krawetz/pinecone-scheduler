@@ -23,5 +23,17 @@ namespace PineconeScheduler.Storing.Repositories
     {
       return _allTasks.Where(x => x.TaskType == DesiredType).ToList();
     }
+
+    public void CleanAll()
+    {
+      foreach(var task in _allTasks)
+      {
+        if(task.Trigger != null)
+        {
+          task.Trigger.CleanUp();
+          System.Console.WriteLine("Cleaned up " + task.Name);
+        }
+      }
+    }
   }
 }
