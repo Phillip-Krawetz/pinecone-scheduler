@@ -7,7 +7,7 @@ namespace PineconeScheduler.Client.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
-  public TaskRepository TaskRepo = new TaskRepository();
+  private TaskRepository TaskRepo = new TaskRepository();
 
   public ObservableCollection<IScheduledTask> _allTasks;
 
@@ -25,5 +25,13 @@ public class MainWindowViewModel : ViewModelBase
   public void CleanAll()
   {
     TaskRepo.CleanAll();
+  }
+
+  public void AddTask(IScheduledTask NewTask)
+  {
+    if(TaskRepo.AddTask(NewTask))
+    {
+      AllTasks.Add(NewTask);
+    }
   }
 }
