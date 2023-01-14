@@ -12,7 +12,7 @@ namespace PineconeScheduler.Client;
 
 public partial class App : Application
 {
-  private TaskRepository _repo = new TaskRepository();
+  public TaskRepository TaskRepo = new TaskRepository();
   public override void Initialize()
   {
     AvaloniaXamlLoader.Load(this);
@@ -66,7 +66,7 @@ public partial class App : Application
 
   public void ExitCommand(object? sender, object args)
   {
-    _repo.CleanAll();
+    TaskRepo.CleanAll();
     (App.Current?.ApplicationLifetime as IClassicDesktopStyleApplicationLifetime)?.Shutdown();
   }
 

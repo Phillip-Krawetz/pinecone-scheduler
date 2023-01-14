@@ -19,6 +19,12 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <ScrollViewer Margin="0,40,0,20" Name="MainScroll">
+      <StackPanel>
+        <Expander Header="Tasks" >
+          <TextBlock Name="AddTaskButton" Text="Add Task" />
+        </Expander>
+      </StackPanel>
+    </ScrollViewer>
 
 </Window>
