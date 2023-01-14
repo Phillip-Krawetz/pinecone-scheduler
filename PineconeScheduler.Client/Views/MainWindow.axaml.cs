@@ -17,12 +17,7 @@ public partial class MainWindow : Window
 
     var button = this.FindControl<TextBlock>("AddTaskButton");
     button.PointerReleased += CreateTask;
-
-    this.PropertyChanged += SetScrollBar;
   }
-
-  private void SetScrollBar(object? sender, AvaloniaPropertyChangedEventArgs args)
-  {}
 
   private void CreateTask(object? sender, EventArgs args)
   {
