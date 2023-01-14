@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Text;
 using PineconeScheduler.Domain.Interfaces;
 
 namespace PineconeScheduler.Domain.Models
@@ -23,7 +24,9 @@ namespace PineconeScheduler.Domain.Models
 
     public override string GetIdentifyingString()
     {
-      return Name + Command + Arguments + Trigger?.GetIdentifyingString();
+      var sb = new StringBuilder(Name);
+      sb.AppendJoin(null, Command, Arguments, Trigger?.GetIdentifyingString());
+      return sb.ToString();
     }
   }
 }
