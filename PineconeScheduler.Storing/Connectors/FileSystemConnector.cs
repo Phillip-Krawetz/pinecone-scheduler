@@ -43,6 +43,7 @@ namespace PineconeScheduler.Storing.Connectors
         var CurrentTask = JsonConvert.DeserializeObject<IScheduledTask>(jsonString, settings);
         if(CurrentTask != null)
         {
+          CurrentTask.Trigger?.BeginListening();
           allTasks.Add(CurrentTask);
           System.Console.WriteLine("Added task " + CurrentTask.Name);
         }

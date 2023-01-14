@@ -6,7 +6,6 @@ namespace PineconeScheduler.Domain.Models
   {
     public UnlockTrigger()
     {
-      SystemEvents.SessionSwitch += new SessionSwitchEventHandler(Events_SessionSwitch);
     }
 
     private void Events_SessionSwitch(object sender, SessionSwitchEventArgs args)
@@ -24,6 +23,11 @@ namespace PineconeScheduler.Domain.Models
     public override string GetIdentifyingString()
     {
       return this.GetType().ToString();
+    }
+
+    public override void BeginListening()
+    {
+      SystemEvents.SessionSwitch += new SessionSwitchEventHandler(Events_SessionSwitch);
     }
   }
 }

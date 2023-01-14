@@ -37,6 +37,7 @@ namespace PineconeScheduler.Storing.Repositories
       {
         return;
       }
+      NewTask.Trigger?.BeginListening();
       _converter.SaveTask(NewTask);
       _allTasks.Add(NewTask);
     }

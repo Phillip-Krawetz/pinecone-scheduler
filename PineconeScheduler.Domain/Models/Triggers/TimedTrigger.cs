@@ -23,6 +23,11 @@ namespace PineconeScheduler.Domain.Models
       return this.GetType().ToString();
     }
 
+    public override void BeginListening()
+    {
+      throw new NotImplementedException();
+    }
+
     public TimedTrigger(double Interval)
     {
       this.Interval = Interval;
