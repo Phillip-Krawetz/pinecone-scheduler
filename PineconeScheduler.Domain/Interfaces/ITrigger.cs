@@ -5,5 +5,6 @@ namespace PineconeScheduler.Domain.Interfaces
     public event EventHandler? Completed;
     public bool Repeatable { get; set; }
     public void CleanUp();
+    string GetIdentifyingString();
   }
 }

@@ -12,5 +12,10 @@ namespace PineconeScheduler.Domain.Models
     {
       throw new NotImplementedException();
     }
+
+    public override string GetIdentifyingString()
+    {
+      throw new NotImplementedException();
+    }
   }
 }

@@ -27,5 +27,7 @@ namespace PineconeScheduler.Domain.Models
     {
       this.Completed?.Invoke(this, e);
     }
+
+    public abstract string GetIdentifyingString();
   }
 }

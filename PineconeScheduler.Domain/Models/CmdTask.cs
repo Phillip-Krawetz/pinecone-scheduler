@@ -20,5 +20,10 @@ namespace PineconeScheduler.Domain.Models
       task.StartInfo.Arguments = Arguments;
       task.Start();
     }
+
+    public override string GetIdentifyingString()
+    {
+      return Name + Command + Arguments + Trigger?.GetIdentifyingString();
+    }
   }
 }

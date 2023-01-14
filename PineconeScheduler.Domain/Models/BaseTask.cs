@@ -23,5 +23,7 @@ namespace PineconeScheduler.Domain.Models
     }
 
     public abstract void Execute(object? sender, EventArgs args);
+
+    public abstract string GetIdentifyingString();
   }
 }

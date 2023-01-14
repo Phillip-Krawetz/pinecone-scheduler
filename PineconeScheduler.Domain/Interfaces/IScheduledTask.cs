@@ -7,5 +7,6 @@ namespace PineconeScheduler.Domain.Interfaces
     public string Name { get; set; }
     public ITrigger? Trigger { get; set; }
     void Execute(object? sender, EventArgs args);
+    string GetIdentifyingString();
   }
 }

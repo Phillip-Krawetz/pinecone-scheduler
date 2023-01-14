@@ -20,5 +20,10 @@ namespace PineconeScheduler.Domain.Models
     {
       SystemEvents.SessionSwitch -= new SessionSwitchEventHandler(Events_SessionSwitch);
     }
+
+    public override string GetIdentifyingString()
+    {
+      return this.GetType().ToString();
+    }
   }
 }

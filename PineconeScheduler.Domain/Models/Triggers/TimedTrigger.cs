@@ -18,6 +18,11 @@ namespace PineconeScheduler.Domain.Models
       throw new NotImplementedException();
     }
 
+    public override string GetIdentifyingString()
+    {
+      return this.GetType().ToString();
+    }
+
     public TimedTrigger(double Interval)
     {
       this.Interval = Interval;
