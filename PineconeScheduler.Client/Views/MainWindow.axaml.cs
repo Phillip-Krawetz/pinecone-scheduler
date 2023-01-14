@@ -1,6 +1,7 @@
 using System;
 using Avalonia;
 using Avalonia.Controls;
+using PineconeScheduler.Client.ViewModels;
 
 namespace PineconeScheduler.Client.Views;
 
@@ -23,7 +24,6 @@ public partial class MainWindow : Window
   {
     var dummyTask = new Domain.Models.CmdTask("Test", new Domain.Models.UnlockTrigger(), "C:\\Program Files\\VideoLAN\\VLC\\vlc.exe");
       dummyTask.Arguments = "\"C:\\Videos\\Test.mp4\" -Idummy -f --no-osd --video-on-top vlc://quit";
-    var app = Application.Current as App;
-    app?.TaskRepo.AddTask(dummyTask);
+    (this.DataContext as MainWindowViewModel)?.TaskRepo.AddTask(dummyTask);
   }
 }

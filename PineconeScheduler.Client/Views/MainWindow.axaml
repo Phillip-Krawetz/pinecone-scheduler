@@ -19,12 +19,29 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <ScrollViewer Margin="0,40,0,20" Name="MainScroll">
-      <StackPanel>
-        <Expander Header="Tasks" >
-          <TextBlock Name="AddTaskButton" Text="Add Task" />
-        </Expander>
-      </StackPanel>
-    </ScrollViewer>
+    <StackPanel Margin="0,40,0,20">
+      <Border CornerRadius="10" Background="Black" BorderThickness="2" Padding="4" Margin="1" 
+              HorizontalAlignment="Center">
+        <TextBlock Name="AddTaskButton" Text="Add Task" />
+      </Border>
+      <ScrollViewer Name="MainScroll">
+        <StackPanel>
+          <Expander Header="Tasks" >
+            <ItemsControl Items="{Binding AllTasks}">
+              <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                  <StackPanel />
+                </ItemsPanelTemplate>
+              </ItemsControl.ItemsPanel>
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <TextBlock Text="{Binding Name}" />
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </Expander>
+        </StackPanel>
+      </ScrollViewer>
+    </StackPanel>
 
 </Window>

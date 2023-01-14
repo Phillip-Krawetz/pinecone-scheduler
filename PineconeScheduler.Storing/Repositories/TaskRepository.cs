@@ -33,7 +33,7 @@ namespace PineconeScheduler.Storing.Repositories
 
     public void AddTask(IScheduledTask NewTask)
     {
-      if(_allTasks.Where(x => x.GetIdentifyingString() == NewTask.GetIdentifyingString()) != null)
+      if(_allTasks.Any(x => x.GetIdentifyingString() == NewTask.GetIdentifyingString()))
       {
         return;
       }
