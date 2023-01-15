@@ -6,6 +6,8 @@ namespace PineconeScheduler.Domain.Models
   {
     public bool Repeatable { get; set; }
 
+    public bool Active { get; set; }
+
     public event EventHandler? Completed;
 
     public abstract void CleanUp();
@@ -34,6 +36,13 @@ namespace PineconeScheduler.Domain.Models
 
     public abstract string GetIdentifyingString();
 
-    public abstract void BeginListening();
+    public void BeginListening()
+    {
+      if(Active){
+        BeginListeningTempl();
+      }
+    }
+
+    protected abstract void BeginListeningTempl();
   }
 }

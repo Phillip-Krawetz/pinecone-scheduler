@@ -5,8 +5,10 @@ namespace PineconeScheduler.Domain.Models
 {
   public class UnlockTrigger : BaseTrigger
   {
-    public UnlockTrigger()
+    public UnlockTrigger(bool Repeatable = false, bool Active = true)
     {
+      this.Repeatable = Repeatable;
+      this.Active = Active;
     }
 
     private void Events_SessionSwitch(object sender, SessionSwitchEventArgs args)
@@ -26,7 +28,7 @@ namespace PineconeScheduler.Domain.Models
       return this.GetType().ToString();
     }
 
-    public override void BeginListening()
+    protected override void BeginListeningTempl()
     {
       SystemEvents.SessionSwitch += new SessionSwitchEventHandler(Events_SessionSwitch);
     }

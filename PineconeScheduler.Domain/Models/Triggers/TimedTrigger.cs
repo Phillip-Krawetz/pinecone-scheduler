@@ -28,7 +28,7 @@ namespace PineconeScheduler.Domain.Models
       return this.GetType().ToString();
     }
 
-    public override void BeginListening()
+    protected override void BeginListeningTempl()
     {
       _timer = new System.Timers.Timer(Interval);
       _timer.Elapsed += OnCompleted;
@@ -36,10 +36,11 @@ namespace PineconeScheduler.Domain.Models
       _timer.Start();
     }
 
-    public TimedTrigger(double Interval, bool Repeatable = false)
+    public TimedTrigger(double Interval, bool Repeatable = false, bool Active = true)
     {
       this.Interval = Interval;
       this.Repeatable = Repeatable;
+      this.Active = Active;
     }
 
     public override string ToString()
