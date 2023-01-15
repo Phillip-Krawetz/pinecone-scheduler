@@ -60,7 +60,10 @@ public partial class App : Application
 
   public void ExitCommand(object? sender, object args)
   {
-    (this.DataContext as MainWindowViewModel)?.CleanAll();
+    if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+    {
+      (desktop.MainWindow.DataContext as MainWindowViewModel)?.CleanAll();
+    }
     (App.Current?.ApplicationLifetime as IClassicDesktopStyleApplicationLifetime)?.Shutdown();
   }
 
