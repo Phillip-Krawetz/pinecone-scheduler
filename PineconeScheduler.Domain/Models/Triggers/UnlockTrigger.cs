@@ -1,3 +1,4 @@
+using System.Text;
 using Microsoft.Win32;
 
 namespace PineconeScheduler.Domain.Models
@@ -11,7 +12,7 @@ namespace PineconeScheduler.Domain.Models
     private void Events_SessionSwitch(object sender, SessionSwitchEventArgs args)
     {
       if(args.Reason == SessionSwitchReason.SessionUnlock){
-        OnCompleted(args);
+        OnCompleted(sender, args);
       }
     }
 
@@ -28,6 +29,13 @@ namespace PineconeScheduler.Domain.Models
     public override void BeginListening()
     {
       SystemEvents.SessionSwitch += new SessionSwitchEventHandler(Events_SessionSwitch);
+    }
+
+    public override string ToString()
+    {
+      var sb = new StringBuilder();
+      sb.AppendJoin(' ', "Session unlock trigger;", "Repeats:", Repeatable);
+      return sb.ToString();
     }
   }
 }

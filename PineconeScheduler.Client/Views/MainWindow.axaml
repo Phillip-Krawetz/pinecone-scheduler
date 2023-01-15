@@ -35,7 +35,9 @@
               </ItemsControl.ItemsPanel>
               <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                  <TextBlock Text="{Binding Name}" />
+                  <Expander Header="{Binding Name}">
+                    <TextBlock Text="{Binding Trigger}"/>
+                  </Expander>
                 </DataTemplate>
               </ItemsControl.ItemTemplate>
             </ItemsControl>

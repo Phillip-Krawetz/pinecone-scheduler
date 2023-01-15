@@ -1,4 +1,5 @@
-using PineconeScheduler.Domain.Interfaces;
+using System.Text;
+using System.Timers;
 
 namespace PineconeScheduler.Domain.Models
 {
@@ -6,6 +7,7 @@ namespace PineconeScheduler.Domain.Models
   {
     public double Interval { get; set; }
     public DateTime ScheduledTime { get; set; }
+    private System.Timers.Timer? _timer { get; set; }
 
     public void CalculateInterval()
     {
@@ -15,7 +17,10 @@ namespace PineconeScheduler.Domain.Models
 
     public override void CleanUp()
     {
-      throw new NotImplementedException();
+      if(!Repeatable)
+      {
+        _timer?.Dispose();
+      }
     }
 
     public override string GetIdentifyingString()
@@ -25,19 +30,23 @@ namespace PineconeScheduler.Domain.Models
 
     public override void BeginListening()
     {
-      throw new NotImplementedException();
+      _timer = new System.Timers.Timer(Interval);
+      _timer.Elapsed += OnCompleted;
+      _timer.AutoReset = Repeatable;
+      _timer.Start();
     }
 
-    public TimedTrigger(double Interval)
+    public TimedTrigger(double Interval, bool Repeatable = false)
     {
       this.Interval = Interval;
-      Completed += (s,e) => {};
+      this.Repeatable = Repeatable;
     }
 
-    public TimedTrigger(DateTime ScheduledTime)
+    public override string ToString()
     {
-      this.ScheduledTime = ScheduledTime;
-      Completed += (s,e) => {};
+      var sb = new StringBuilder();
+      sb.AppendJoin(' ', "Time trigger: ", Interval, "ms;","Repeats:", Repeatable);
+      return sb.ToString();
     }
   }
 }

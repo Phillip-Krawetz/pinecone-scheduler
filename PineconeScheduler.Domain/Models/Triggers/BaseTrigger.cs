@@ -23,7 +23,7 @@ namespace PineconeScheduler.Domain.Models
       }
     }
 
-    protected virtual void OnCompleted(EventArgs e)
+    protected virtual void OnCompleted(object? sender, EventArgs e)
     {
       this.Completed?.Invoke(this, e);
     }

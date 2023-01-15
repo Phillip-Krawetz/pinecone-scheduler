@@ -22,8 +22,9 @@ public partial class MainWindow : Window
 
   private void CreateTask(object? sender, EventArgs args)
   {
-    var dummyTask = new Domain.Models.CmdTask("Test2", new Domain.Models.UnlockTrigger(), "C:\\Program Files\\VideoLAN\\VLC\\vlc.exe");
-      dummyTask.Arguments = "\"C:\\Videos\\Test.mp4\" -Idummy -f --no-osd --video-on-top vlc://quit";
+    var dummyTask = new Domain.Models.CmdTask("TimedTask1", new Domain.Models.TimedTrigger(5000), "\"C:\\Program Files (x86)\\Winamp\\winamp.exe\"");
+    // var dummyTask = new Domain.Models.CmdTask("Test2", new Domain.Models.UnlockTrigger(), "C:\\Program Files\\VideoLAN\\VLC\\vlc.exe");
+    dummyTask.Arguments = "\"C:\\Audio\\06. escape.flac\"";
     (this.DataContext as MainWindowViewModel)?.AddTask(dummyTask);
   }
 }
