@@ -17,14 +17,18 @@ namespace PineconeScheduler.Domain.Models
 
     public BaseTrigger()
     {
-      if(!Repeatable)
+      Completed += delegate
       {
-        Completed += CleanUp;
-      }
+        if(!Repeatable)
+        {
+          CleanUp();
+        }
+      };
     }
 
     protected virtual void OnCompleted(object? sender, EventArgs e)
     {
+      System.Console.WriteLine("Trigger invoked");
       this.Completed?.Invoke(this, e);
     }
 
